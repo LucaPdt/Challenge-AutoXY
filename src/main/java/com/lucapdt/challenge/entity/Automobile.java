@@ -24,7 +24,7 @@ public class Automobile {
     private int anno;
 
     @Column(name = "prezzo")
-    private long prezzo;
+    private double prezzo;
 
     @Column(name = "stato")
     private String stato;
@@ -32,7 +32,7 @@ public class Automobile {
     public Automobile() {
     }
 
-    public Automobile(String marca, String modello, String motorizzazione, int anno, long prezzo, String stato) {
+    public Automobile(String marca, String modello, String motorizzazione, int anno, double prezzo, String stato) {
         this.marca = marca;
         this.modello = modello;
         this.motorizzazione = motorizzazione;
@@ -77,11 +77,11 @@ public class Automobile {
         this.anno = anno;
     }
 
-    public long getPrezzo() {
+    public double getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(long prezzo) {
+    public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
     }
 
