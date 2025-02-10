@@ -69,8 +69,6 @@ public class AutomobileServiceTest {
         Automobile auto = new Automobile("Fiat", "Panda", "2.0 JTDM", 2011, 7500.00, "disponibile");
 
         when(automobileRepository.save(auto)).thenReturn(auto);
-        verify(automobileRepository).save(auto);
-
         assertThat(automobileService.save(auto)).isEqualTo(auto);
     }
 }

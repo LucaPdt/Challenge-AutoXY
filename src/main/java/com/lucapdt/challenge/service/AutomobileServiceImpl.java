@@ -30,6 +30,6 @@ public class AutomobileServiceImpl implements AutomobileService{
 
     @Override
     public Automobile save(Automobile auto) {
-        return null;
+        return automobileRepository.save(auto);
     }
 }
