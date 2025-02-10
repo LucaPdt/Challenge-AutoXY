@@ -35,6 +35,9 @@ public class AutomobileServiceImpl implements AutomobileService{
 
     @Override
     public Automobile update(int id, Automobile auto) {
-        return null;
+        if(!automobileRepository.existsById(id))
+            throw new NoSuchElementException("Non e' stata trovata una automobile per l'id inserito");
+
+        return automobileRepository.save(auto);
     }
 }
