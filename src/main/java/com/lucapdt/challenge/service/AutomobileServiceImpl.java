@@ -1,6 +1,7 @@
 package com.lucapdt.challenge.service;
 
 import com.lucapdt.challenge.entity.Automobile;
+import com.lucapdt.challenge.exception.AutomobileNotFoundException;
 import com.lucapdt.challenge.repository.AutomobileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,7 +25,7 @@ public class AutomobileServiceImpl implements AutomobileService{
     public Automobile findById(int id) {
         Optional<Automobile> optionalAutomobile = automobileRepository.findById(id);
         if(optionalAutomobile.isEmpty())
-            throw new NoSuchElementException("Non e' stata trovata una automobile per l'id inserito");
+            throw new AutomobileNotFoundException("Non e' stata trovata una automobile per l'id inserito");
         else return optionalAutomobile.get();
     }
 
@@ -36,7 +37,7 @@ public class AutomobileServiceImpl implements AutomobileService{
     @Override
     public Automobile update(int id, Automobile auto) {
         if(!automobileRepository.existsById(id))
-            throw new NoSuchElementException("Non e' stata trovata una automobile per l'id inserito");
+            throw new AutomobileNotFoundException("Non e' stata trovata una automobile per l'id inserito");
 
         return automobileRepository.save(auto);
     }

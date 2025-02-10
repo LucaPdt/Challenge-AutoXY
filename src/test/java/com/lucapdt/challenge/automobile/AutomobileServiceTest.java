@@ -1,6 +1,7 @@
 package com.lucapdt.challenge.automobile;
 
 import com.lucapdt.challenge.entity.Automobile;
+import com.lucapdt.challenge.exception.AutomobileNotFoundException;
 import com.lucapdt.challenge.repository.AutomobileRepository;
 import com.lucapdt.challenge.service.AutomobileServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -60,7 +61,7 @@ public class AutomobileServiceTest {
         when(automobileRepository.findById(2)).thenReturn(Optional.empty());
         assertThat(automobileService.findById(1)).isEqualTo(auto);
 
-        assertThatThrownBy(() -> automobileService.findById(2)).isInstanceOf(NoSuchElementException.class).hasMessage("Non e' stata trovata una automobile per l'id inserito");
+        assertThatThrownBy(() -> automobileService.findById(2)).isInstanceOf(AutomobileNotFoundException.class).hasMessage("Non e' stata trovata una automobile per l'id inserito");
     }
 
     @Test
@@ -82,6 +83,6 @@ public class AutomobileServiceTest {
         when(automobileRepository.save(autoAggiornata)).thenReturn(autoAggiornata);
 
         assertThat(automobileService.update(id, autoAggiornata)).isEqualTo(autoAggiornata);
-        assertThatThrownBy(() -> automobileService.update(2, autoAggiornata)).isInstanceOf(RuntimeException.class).hasMessage("Non e' stata trovata una automobile per l'id inserito");
+        assertThatThrownBy(() -> automobileService.update(2, autoAggiornata)).isInstanceOf(AutomobileNotFoundException.class).hasMessage("Non e' stata trovata una automobile per l'id inserito");
     }
 }
