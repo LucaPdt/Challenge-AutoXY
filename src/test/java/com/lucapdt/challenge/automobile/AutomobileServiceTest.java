@@ -85,4 +85,15 @@ public class AutomobileServiceTest {
         assertThat(automobileService.update(id, autoAggiornata)).isEqualTo(autoAggiornata);
         assertThatThrownBy(() -> automobileService.update(2, autoAggiornata)).isInstanceOf(AutomobileNotFoundException.class).hasMessage("Non e' stata trovata una automobile per l'id inserito");
     }
+
+    @Test
+    void deleteTest(){
+        int id = 1;
+        Automobile auto = new Automobile("Fiat", "Panda", "2.0 JTDM", 2011, 7500.00, "disponibile");
+
+        when(automobileRepository.existsById(id)).thenReturn(true);
+
+        automobileService.deleteById(id);
+        verify(automobileRepository).deleteById(id);
+    }
 }

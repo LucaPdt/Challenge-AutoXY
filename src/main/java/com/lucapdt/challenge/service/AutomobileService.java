@@ -12,4 +12,6 @@ public interface AutomobileService {
     Automobile save(Automobile auto);
 
     Automobile update(int id, Automobile auto);
+
+    void deleteById(int id);
 }

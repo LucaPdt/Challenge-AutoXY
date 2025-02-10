@@ -41,4 +41,9 @@ public class AutomobileServiceImpl implements AutomobileService{
 
         return automobileRepository.save(auto);
     }
+
+    @Override
+    public void deleteById(int id) {
+
+    }
 }
