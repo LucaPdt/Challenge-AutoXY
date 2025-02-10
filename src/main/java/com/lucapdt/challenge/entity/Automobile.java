@@ -1,0 +1,95 @@
+package com.lucapdt.challenge.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "automobile")
+public class Automobile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "marca")
+    private String marca;
+
+    @Column(name = "modello")
+    private String modello;
+
+    @Column(name = "motorizzazione")
+    private String motorizzazione;
+
+    @Column(name = "anno")
+    private int anno;
+
+    @Column(name = "prezzo")
+    private long prezzo;
+
+    @Column(name = "stato")
+    private String stato;
+
+    public Automobile() {
+    }
+
+    public Automobile(String marca, String modello, String motorizzazione, int anno, long prezzo, String stato) {
+        this.marca = marca;
+        this.modello = modello;
+        this.motorizzazione = motorizzazione;
+        this.anno = anno;
+        this.prezzo = prezzo;
+        this.stato = stato;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModello() {
+        return modello;
+    }
+
+    public void setModello(String modello) {
+        this.modello = modello;
+    }
+
+    public String getMotorizzazione() {
+        return motorizzazione;
+    }
+
+    public void setMotorizzazione(String motorizzazione) {
+        this.motorizzazione = motorizzazione;
+    }
+
+    public int getAnno() {
+        return anno;
+    }
+
+    public void setAnno(int anno) {
+        this.anno = anno;
+    }
+
+    public long getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(long prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public String getStato() {
+        return stato;
+    }
+
+    public void setStato(String stato) {
+        this.stato = stato;
+    }
+}
