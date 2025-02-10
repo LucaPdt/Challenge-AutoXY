@@ -10,4 +10,6 @@ public interface AutomobileService {
     Automobile findById(int id);
 
     Automobile save(Automobile auto);
+
+    Automobile update(int id, Automobile auto);
 }

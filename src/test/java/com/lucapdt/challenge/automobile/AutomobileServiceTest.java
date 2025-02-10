@@ -71,4 +71,17 @@ public class AutomobileServiceTest {
         when(automobileRepository.save(auto)).thenReturn(auto);
         assertThat(automobileService.save(auto)).isEqualTo(auto);
     }
+
+    @Test
+    void updateTest(){
+        int id = 1;
+        Automobile auto = new Automobile("Fiat", "Panda", "2.0 JTDM", 2011, 7500.00, "disponibile");
+        Automobile autoAggiornata = new Automobile("Fiat", "Panda", "2.0 JTDM", 2011, 0, "venduta");
+
+        when(automobileRepository.existsById(id)).thenReturn(true);
+        when(automobileRepository.save(autoAggiornata)).thenReturn(autoAggiornata);
+
+        assertThat(automobileService.update(id, autoAggiornata)).isEqualTo(autoAggiornata);
+        assertThatThrownBy(() -> automobileService.update(2, autoAggiornata)).isInstanceOf(RuntimeException.class).hasMessage("Non e' stata trovata una automobile per l'id inserito");
+    }
 }
