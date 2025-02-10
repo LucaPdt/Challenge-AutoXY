@@ -8,4 +8,6 @@ public interface AutomobileService {
     Page<Automobile> findAll(int page, int size);
 
     Automobile findById(int id);
+
+    Automobile save(Automobile auto);
 }

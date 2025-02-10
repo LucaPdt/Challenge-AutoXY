@@ -27,4 +27,9 @@ public class AutomobileServiceImpl implements AutomobileService{
             throw new NoSuchElementException("Non e' stata trovata una automobile per l'id inserito");
         else return optionalAutomobile.get();
     }
+
+    @Override
+    public Automobile save(Automobile auto) {
+        return null;
+    }
 }

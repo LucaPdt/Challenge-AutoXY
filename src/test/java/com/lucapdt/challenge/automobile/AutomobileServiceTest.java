@@ -17,6 +17,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class AutomobileServiceTest {
@@ -60,5 +61,16 @@ public class AutomobileServiceTest {
         assertThat(automobileService.findById(1)).isEqualTo(auto);
 
         assertThatThrownBy(() -> automobileService.findById(2)).isInstanceOf(NoSuchElementException.class).hasMessage("Non e' stata trovata una automobile per l'id inserito");
+    }
+
+    @Test
+    void saveTest(){
+
+        Automobile auto = new Automobile("Fiat", "Panda", "2.0 JTDM", 2011, 7500.00, "disponibile");
+
+        when(automobileRepository.save(auto)).thenReturn(auto);
+        verify(automobileRepository).save(auto);
+
+        assertThat(automobileService.save(auto)).isEqualTo(auto);
     }
 }
