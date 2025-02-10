@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class AutomobileServiceImpl implements AutomobileService{
 
@@ -19,7 +21,10 @@ public class AutomobileServiceImpl implements AutomobileService{
     }
 
     @Override
-    public Automobile findById(int i) {
-        return null;
+    public Automobile findById(int id) {
+        Optional<Automobile> optionalAutomobile = automobileRepository.findById(id);
+        if(optionalAutomobile.isEmpty())
+            throw new NoSuchElementException("Non e' stata trovata una automobile per l'id inserito");
+        else return optionalAutomobile.get();
     }
 }

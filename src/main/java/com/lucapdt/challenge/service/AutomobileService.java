@@ -7,5 +7,5 @@ public interface AutomobileService {
 
     Page<Automobile> findAll(int page, int size);
 
-    Automobile findById(int i);
+    Automobile findById(int id);
 }
