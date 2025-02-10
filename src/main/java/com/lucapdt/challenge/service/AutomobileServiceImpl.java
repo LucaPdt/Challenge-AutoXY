@@ -44,6 +44,9 @@ public class AutomobileServiceImpl implements AutomobileService{
 
     @Override
     public void deleteById(int id) {
+        if(!automobileRepository.existsById(id))
+            throw new AutomobileNotFoundException("Non e' stata trovata una automobile per l'id inserito");
 
+        automobileRepository.deleteById(id);
     }
 }
