@@ -6,4 +6,6 @@ import org.springframework.data.domain.Page;
 public interface AutomobileService {
 
     Page<Automobile> findAll(int page, int size);
+
+    Automobile findById(int i);
 }

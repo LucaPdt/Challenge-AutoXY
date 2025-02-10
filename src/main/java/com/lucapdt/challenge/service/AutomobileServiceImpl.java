@@ -17,4 +17,9 @@ public class AutomobileServiceImpl implements AutomobileService{
     public Page<Automobile> findAll(int page, int size) {
         return automobileRepository.findAll(PageRequest.of(page, size));
     }
+
+    @Override
+    public Automobile findById(int i) {
+        return null;
+    }
 }

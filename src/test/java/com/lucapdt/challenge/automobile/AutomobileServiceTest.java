@@ -12,8 +12,11 @@ import org.springframework.data.domain.*;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.when;
 
 public class AutomobileServiceTest {
@@ -45,5 +48,17 @@ public class AutomobileServiceTest {
         assertThat(result).isNotNull();
         assertThat(result.getContent()).hasSize(2);
         assertThat(result.getContent()).containsExactlyElementsOf(automobileList);
+    }
+
+    @Test
+    void findByIdTest(){
+
+        Automobile auto = new Automobile("Fiat", "Panda", "2.0 JTDM", 2011, 7500.00, "disponibile");
+
+        when(automobileRepository.findById(1)).thenReturn(Optional.of(auto));
+        when(automobileRepository.findById(2)).thenReturn(Optional.empty());
+        assertThat(automobileService.findById(1)).isEqualTo(auto);
+
+        assertThatThrownBy(() -> automobileService.findById(2)).isInstanceOf(NoSuchElementException.class).hasMessage("Non e' stata trovata una automobile per l'id inserito");
     }
 }
